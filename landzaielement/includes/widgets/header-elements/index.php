@@ -20,7 +20,7 @@ class landzai_nav_builder extends Widget_Base {
     }
 
     public function get_categories() {
-        return array('landzai-header');
+        return array('landzai-builder');
     }
 
     protected function _register_controls() {

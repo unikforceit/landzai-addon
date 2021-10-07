@@ -4,17 +4,17 @@ namespace Elementor;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-class landzai_knowledge extends Widget_Base
+class landzai_content_section extends Widget_Base
 {
 
     public function get_name()
     {
-        return 'landzai-knowledge';
+        return 'landzai-content-section';
     }
 
     public function get_title()
     {
-        return __('Knowledge', 'landzai');
+        return __('Content Section', 'landzai');
     }
 
     public function get_categories()
@@ -24,7 +24,7 @@ class landzai_knowledge extends Widget_Base
 
     public function get_icon()
     {
-        return 'eicon-person';
+        return 'eicon-image';
     }
 
     protected function _register_controls()
@@ -50,7 +50,10 @@ class landzai_knowledge extends Widget_Base
             [
                 'label' => __('Info', 'landzai'),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim adipi svsciang pellentesque curabitur at tellus pharetra non. Natoque dosnec quis felis nunc, amet. Integer venenatis at velit malesuada vestibulum tempor vitae. Eu sed proin eget aliquet varius in quis. Volutpat turpis quis quis posues re.', 'landzai'),
+                'default' => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Enim adipi svsciang pellentesque curabitur at tellus pharetra non. Natoque 
+                dosnec quis felis nunc, amet. Integer venenatis at velit malesuada vestibulum tempor vitae. Eu sed proin eget
+                 aliquet varius in quis. Volutpat turpis quis quis posues re.', 'landzai'),
             ]
         );
         $this->add_control(
@@ -63,7 +66,7 @@ class landzai_knowledge extends Widget_Base
         );
         $this->add_control(
             'link', [
-                'label' => __('Link', 'landzai'),
+                'label' => __('Link 1', 'landzai'),
                 'type' => Controls_Manager::URL,
                 'show_external' => true,
                 'default' => [
@@ -151,7 +154,7 @@ class landzai_knowledge extends Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-    echo ' <!-- built app area start here  -->
+    echo '<!-- built app area start here  -->
         <section class="built-app-area section">
             <div class="container">
                 <div class="row">
@@ -164,7 +167,7 @@ class landzai_knowledge extends Widget_Base
                     </div>
                     <div class="col-lg-6">
                         <div class="bulit-app-img">
-                            '.get_that_image($settings['image']).'
+                              '.get_that_image($settings['image']).'
                         </div>
                     </div>
                 </div>
@@ -184,5 +187,5 @@ class landzai_knowledge extends Widget_Base
 
 }
 
-Plugin::instance()->widgets_manager->register_widget_type(new landzai_knowledge());
+Plugin::instance()->widgets_manager->register_widget_type(new landzai_content_section());
 ?>

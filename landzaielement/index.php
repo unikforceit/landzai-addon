@@ -175,17 +175,9 @@ if (!class_exists('LandzaiElement_Elementor_Addons')) :
                 1);
 
             \Elementor\Plugin::instance()->elements_manager->add_category(
-                'landzai-header',
+                'landzai-builder',
                 array(
-                    'title' => __('Landzai Header', 'landzai'),
-                    'icon' => 'fa fa-plug',
-                ),
-                1);
-
-            \Elementor\Plugin::instance()->elements_manager->add_category(
-                'landzai-footer',
-                array(
-                    'title' => __('Landzai Footer', 'landzai'),
+                    'title' => __('Landzai Builder', 'landzai'),
                     'icon' => 'fa fa-plug',
                 ),
                 1);

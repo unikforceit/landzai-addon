@@ -69,7 +69,7 @@ class Widget_Landzai_logo extends Widget_Base {
 	 * @return array Widget categories.
 	 */
 	public function get_categories() {
-		return [ 'landzai-header' ];
+		return [ 'landzai-builder' ];
 	}
 
 	/**

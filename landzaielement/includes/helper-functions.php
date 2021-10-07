@@ -807,9 +807,9 @@ function get_that_link($link){
     $link = $url.' '.$ext.' '.$nofollow;
     return $link;
 }
-function get_that_image($source){
+function get_that_image($source, $class = 'image'){
     if ($source){
-        $image = '<img src="'. esc_url( $source['url'] ).'" alt="'.get_bloginfo( 'name' ).'">';
+        $image = '<img class="'.$class.'" src="'. esc_url( $source['url'] ).'" alt="'.get_bloginfo( 'name' ).'">';
     }
     return $image;
 }

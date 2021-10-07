@@ -6,14 +6,14 @@ if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
 
 
-class address_slider extends Widget_Base {
+class landzai_brand extends Widget_Base {
 
     public function get_name() {
-        return 'address-slider';
+        return 'landzai-brand';
     }
  
     public function get_title() {
-        return __('Address Slider', 'landzai');
+        return __('Brand', 'landzai');
     }
 
     public function get_icon() {
@@ -37,89 +37,57 @@ class address_slider extends Widget_Base {
         $repeater->add_control(
             'title',
             [
-                'label' => __( 'Title', 'landzai' ),
+                'label' => __( 'Brand Name', 'landzai' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( 'England', 'landzai' ),
+                'default' => __( 'Landzai', 'landzai' ),
             ]
         );
         $repeater->add_control(
-            'location',
+            'image',
             [
-                'label' => __( 'Location', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( '49488 Avenida Obregon,<br/> La Quinta, CA 92253', 'landzai' ),
-            ]
-        );
-        $repeater->add_control(
-            'icon1',
-            [
-                'label' => __( 'Icon 1', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::ICONS,
+                'label' => __( 'Choose Image', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
-                    'value' => 'fas fa-star',
-                    'library' => 'solid',
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
             ]
         );
         $repeater->add_control(
-            'phone',
-            [
-                'label' => __( 'Phone', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( '+1-(281)-813 926<br/> +1-(281)-813 612', 'landzai' ),
-            ]
-        );
-        $repeater->add_control(
-            'icon2',
-            [
-                'label' => __( 'Icon 2', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::ICONS,
+            'link', [
+                'label' => __('Link', 'landzai'),
+                'type' => Controls_Manager::URL,
+                'show_external' => true,
                 'default' => [
-                    'value' => 'fas fa-star',
-                    'library' => 'solid',
-                ],
-            ]
-        );
-        $repeater->add_control(
-            'mail',
-            [
-                'label' => __( 'Mail', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( 'support@landzai.com', 'landzai' ),
-            ]
-        );
-        $repeater->add_control(
-            'icon3',
-            [
-                'label' => __( 'Icon 3', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::ICONS,
-                'default' => [
-                    'value' => 'fas fa-star',
-                    'library' => 'solid',
+                    'url' => '#',
+                    'is_external' => true,
+                    'nofollow' => true,
                 ],
             ]
         );
         $this->add_control(
-            'feature_list',
+            'brand_list',
             [
-                'label' => __( 'Features List', 'landzai' ),
+                'label' => __( 'Brand List', 'landzai' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'title' => __( 'England', 'landzai' ),
+                        'title' => __( 'Landzai', 'landzai' ),
                     ],
                     [
-                        'title' => __( 'England', 'landzai' ),
+                        'title' => __( 'Landzai', 'landzai' ),
                     ],
                     [
-                        'title' => __( 'England', 'landzai' ),
+                        'title' => __( 'Landzai', 'landzai' ),
                     ],
                     [
-                        'title' => __( 'England', 'landzai' ),
+                        'title' => __( 'Landzai', 'landzai' ),
                     ],
                     [
-                        'title' => __( 'England', 'landzai' ),
+                        'title' => __( 'Landzai', 'landzai' ),
+                    ],
+                    [
+                        'title' => __( 'Landzai', 'landzai' ),
                     ],
                 ],
                 'title_field' => '{{{ title }}}',
@@ -224,29 +192,23 @@ class address_slider extends Widget_Base {
     protected function render(){
 
         $settings = $this->get_settings();
-        $option = [
-            'item' => $settings['slider_number'],
-        ];
-        ?>
-        <section class="our-address bg-style1" data-landzai='<?php echo wp_json_encode($option)?>'>
-         <?php echo '<div class="address-carousel owl-carousel position-r">';
-            if ($settings['feature_list']) {
-                foreach ($settings['feature_list'] as $feature) {
-                    echo '<div class="address-item">
-                <h2>'.$feature['title'].'</h2>
-                <ul class="contact-info">
-                    <li>';\Elementor\Icons_Manager::render_icon( $feature['icon1'], [ 'aria-hidden' => 'true' ] );echo' '.$feature['location'].'</li>
-                    <li>';\Elementor\Icons_Manager::render_icon( $feature['icon2'], [ 'aria-hidden' => 'true' ] );echo' '.$feature['phone'].'</li>
-                    <li>';\Elementor\Icons_Manager::render_icon( $feature['icon3'], [ 'aria-hidden' => 'true' ] );echo' '.$feature['mail'].'</li>
-                </ul>
-            </div>';
-                }
+            echo '<!-- brands area start here  -->
+        <div class="brands-area">
+            <div class="container">
+                <div class="brand-list slide-brands">';
+        if ($settings['brand_list']) {
+            foreach ($settings['brand_list'] as $brand) {
+                echo '<div class="single-brand ">
+                        <a '.get_that_link($brand['link']).'>'.get_that_image($brand['image']).'</a>
+                    </div>';
             }
-        echo '</div>            
-        </section>
-';
+        }
+                echo '</div>
+            </div>
+        </div>
+        <!-- brands area end here  -->';
     }
 
 
 }
-Plugin::instance()->widgets_manager->register_widget_type( new address_slider() );
+Plugin::instance()->widgets_manager->register_widget_type( new landzai_brand() );
