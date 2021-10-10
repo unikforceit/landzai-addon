@@ -28,11 +28,28 @@ class landzai_blog extends Widget_Base {
             ]
         );
         $this->add_control(
+            'title',
+            [
+                'label' => __( 'Title', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => __( 'Read The Latest News Here', 'landzai' ),
+            ]
+        );
+        $this->add_control(
+            'info',
+            [
+                'label' => __( 'Info', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => __( 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                 invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', 'landzai' ),
+            ]
+        );
+        $this->add_control(
             'query_type',
             [
                 'label' => __('Query type', 'landzai'),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'category',
+                'default' => 'individual',
                 'options' => [
                     'category' => __('Category', 'landzai'),
                     'individual' => __('Individual', 'landzai'),
@@ -72,7 +89,7 @@ class landzai_blog extends Widget_Base {
             [
                 'label' => __('Posts Per Page', 'landzai'),
                 'type' => Controls_Manager::NUMBER,
-                'default' => 6,
+                'default' => 3,
             ]
         );
         $this->end_controls_section();
@@ -162,8 +179,6 @@ class landzai_blog extends Widget_Base {
         $per_page = $settings['posts_per_page'];
         $cat = $settings['cat_query'];
         $id = $settings['id_query'];
-        $layout = $settings['layout'];
-
 
         if($settings['query_type'] == 'category'){
             $query_args = array(
@@ -189,53 +204,48 @@ class landzai_blog extends Widget_Base {
         }
 
         $wp_query = new \WP_Query($query_args);
-if ($layout == 'layout1') {
-    echo '<section class="blog">
-    <div class="row">';
-    if ($wp_query->have_posts()) {
-        while ($wp_query->have_posts()) {
-            $wp_query->the_post();
-            echo '<article class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="default-blog">
-                            <div class="img-box">
-                                <a href="' . get_the_permalink() . '">';
-            if (has_post_thumbnail()) {
-                the_post_thumbnail('full');
-            }
-            echo '</a>
-                                <div class="caption"><a href="' . get_the_permalink() . '"">' . get_the_title() . '</a></div>
-                            </div>
-                            <div class="post-meta"><span><i class="fa fa-user"></i>  ' . get_the_author() . ' </span>  <span> <i class="fa fa-calendar"></i>  ' . get_the_date('M j, Y') . '</span> <a href="' . get_the_permalink() . '" class="link"><i class="fa fa-link"></i></a></div>
+    echo '<!-- blog ara start here  -->
+        <section class="blog-area section pb-90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <h2 class="title">'.$settings['title'].'</h2>
+                            <p class="sub-title">'.$settings['info'].'</p>
                         </div>
-                    </article>';
-        }
-        wp_reset_postdata();
-    }
-    echo '</div>
-</section>';
-}else {
-    echo '<section class="small-post-column">
-       <div class="post-list">';
+                    </div>
+                </div>
+                <div class="row">';
     if ($wp_query->have_posts()) {
         while ($wp_query->have_posts()) {
             $wp_query->the_post();
-            echo '<div class="post">
-                <div class="post-thumb">
-                    <a href="' . get_the_permalink() . '">';
-                if (has_post_thumbnail()) {
-                    the_post_thumbnail('full');
-                }
-                echo '</a>
-                </div>
-            <a href="' . get_the_permalink() . '"><h5>' . get_the_title() . '</h5></a>
-            <div class="post-info"><i class="far fa-clock"></i>   ' . get_the_date('M j') . '</div>
-        </div>';
+            echo '<div class="col-lg-4 col-md-6">
+                        <div class="single-blog">
+                            <div class="blog-img">
+                                      <a href="' . get_the_permalink() . '">';
+                                        if (has_post_thumbnail()) {
+                                            the_post_thumbnail('full');
+                                        }
+                                        echo '</a>
+                            </div>
+                            <div class="blog-info">
+                                <h3 class="blog-title"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h3>
+                                <ul class="blog-meta">
+                                    <li><a href="'.get_day_link(get_the_time('Y'), get_the_time('m'), get_the_time('j')).'"><i class="far fa-calendar"></i> '.get_the_time('j F, Y').'</a></li>
+                                    <li><a href="#"><i class="far fa-clock"></i> '.display_read_time().' Min To Read</a></li>
+                                </ul>
+                                <p class="blog-cotent"></p>
+                                <a href="' . get_the_permalink() . '" class="blog-btn">Read More</a>
+                            </div>
+                        </div>
+                    </div>';
         }
         wp_reset_postdata();
     }
     echo '</div>
-            </section>';
-}
+            </div>
+        </section>
+        <!-- blog ara end here  -->';
     }
     protected function _content_template() {}
 
