@@ -97,8 +97,8 @@ class landzai_nav_builder extends Widget_Base
                 'label' => __('Color', 'landzai'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .navigation-main-area ul > li a, 
-                    {{WRAPPER}} .navigation-main-area ul > .dropdown:before' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .header-v5 .main-menu ul li a, 
+                    {{WRAPPER}} .header-v5 .main-menu ul li.menu-item-has-children:after' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -107,7 +107,7 @@ class landzai_nav_builder extends Widget_Base
             [
                 'name' => 'nav_fonts',
                 'label' => __('Typography', 'landzai'),
-                'selector' => '{{WRAPPER}} .navigation-main-area ul > li a',
+                'selector' => '{{WRAPPER}} .header-v5 .main-menu ul li a',
             ]
         );
         $this->add_responsive_control(
@@ -117,7 +117,7 @@ class landzai_nav_builder extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .navigation-main-area ul > li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .header-v5 .main-menu ul li' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ]
             ]
         );
@@ -128,7 +128,7 @@ class landzai_nav_builder extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .navigation-main-area ul > li' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .header-v5 .main-menu ul li' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ]
             ]
         );
@@ -147,7 +147,7 @@ class landzai_nav_builder extends Widget_Base
                 'label' => __('Color', 'landzai'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .navigation-main-area ul > li .dropdown-menu > li > a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .header-v5 .main-menu ul li.menu-item-has-children .sub-menu li a' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -157,7 +157,7 @@ class landzai_nav_builder extends Widget_Base
                 'label' => __('Hover Color', 'landzai'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .navigation-main-area ul > li .dropdown-menu > li > a:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .header-v5 .main-menu ul li.menu-item-has-children .sub-menu li a:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -166,7 +166,7 @@ class landzai_nav_builder extends Widget_Base
             [
                 'name' => 'sub_fonts',
                 'label' => __('Typography', 'landzai'),
-                'selector' => '{{WRAPPER}} .navigation-main-area ul > li .dropdown-menu > li > a',
+                'selector' => '{{WRAPPER}} .header-v5 .main-menu ul li.menu-item-has-children .sub-menu li a',
             ]
         );
         $this->add_control(
@@ -183,7 +183,7 @@ class landzai_nav_builder extends Widget_Base
                 'label' => __('Main BG', 'landzai'),
                 'types' => ['classic', 'gradient'],
                 'show_label' => true,
-                'selector' => '{{WRAPPER}} .navigation-main-area ul > li a:hover',
+                'selector' => '{{WRAPPER}} .header-v5 .main-menu ul li.menu-item-has-children .sub-menu li a:hover',
             ]
         );
         $this->add_group_control(
@@ -191,7 +191,7 @@ class landzai_nav_builder extends Widget_Base
             [
                 'name' => 'border',
                 'label' => __('Menu Border', 'landzai'),
-                'selector' => '{{WRAPPER}} .navigation-main-area ul > li .dropdown-menu li',
+                'selector' => '{{WRAPPER}} .header-v5 .main-menu ul li.menu-item-has-children .sub-menu li',
             ]
         );
         $this->add_responsive_control(
@@ -212,7 +212,7 @@ class landzai_nav_builder extends Widget_Base
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .navigation-main-area ul > li .dropdown-menu' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .header-v5 .main-menu ul li.menu-item-has-children .sub-menu' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -230,7 +230,7 @@ class landzai_nav_builder extends Widget_Base
                 'label' => __('Main BG', 'landzai'),
                 'types' => ['classic', 'gradient'],
                 'show_label' => true,
-                'selector' => '{{WRAPPER}} .navigation-main-area ul > li .dropdown-menu',
+                'selector' => '{{WRAPPER}} .header-v5 .main-menu ul li.menu-item-has-children .sub-menu',
             ]
         );
         $this->add_group_control(
@@ -238,7 +238,7 @@ class landzai_nav_builder extends Widget_Base
             [
                 'name' => 'droborder',
                 'label' => __('Main Border', 'landzai'),
-                'selector' => '{{WRAPPER}} .navigation-main-area ul > li .dropdown-menu',
+                'selector' => '{{WRAPPER}} .header-v5 .main-menu ul li.menu-item-has-children .sub-menu',
             ]
         );
         $this->end_controls_section();
@@ -256,7 +256,7 @@ class landzai_nav_builder extends Widget_Base
                 'label' => __('Main Color', 'landzai'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .mobile_menu_content .mobile-main-navigation .navbar-nav > li a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .mobile-menu ul li a' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -265,7 +265,7 @@ class landzai_nav_builder extends Widget_Base
             [
                 'name' => 'm_fonts',
                 'label' => __('Main Typography', 'landzai'),
-                'selector' => '{{WRAPPER}} .mobile_menu_content .mobile-main-navigation .navbar-nav > li a',
+                'selector' => '{{WRAPPER}} .mobile-menu ul li a',
             ]
         );
         $this->add_control(
@@ -274,7 +274,7 @@ class landzai_nav_builder extends Widget_Base
                 'label' => __('Sub Color', 'landzai'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .mobile_menu .mobile_menu_content .mobile-main-navigation .navbar-nav .dropdown-menu li a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .mobile-menu ul li ul li a' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -283,7 +283,7 @@ class landzai_nav_builder extends Widget_Base
             [
                 'name' => 's_fonts',
                 'label' => __('Sub Typography', 'landzai'),
-                'selector' => '{{WRAPPER}} .mobile_menu .mobile_menu_content .mobile-main-navigation .navbar-nav .dropdown-menu li a',
+                'selector' => '{{WRAPPER}} .mobile-menu ul li ul li a',
             ]
         );
         $this->add_control(
@@ -292,7 +292,7 @@ class landzai_nav_builder extends Widget_Base
                 'label' => __('Toggle Color', 'landzai'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .mobile_menu_button' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .mobile-menu-area .menu-bar span' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -310,7 +310,7 @@ class landzai_nav_builder extends Widget_Base
                 'label' => __('Main BG', 'landzai'),
                 'types' => ['classic', 'gradient'],
                 'show_label' => true,
-                'selector' => '{{WRAPPER}} .mobile_menu_content',
+                'selector' => '{{WRAPPER}} .mobile-menu.open-menu',
             ]
         );
         $this->end_controls_section();

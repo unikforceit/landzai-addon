@@ -49,19 +49,23 @@
 
     var LandzaiNav = function ($scope, $) {
 
-        $scope.find('#medi-main-builder-header').each(function () {
+        $scope.find('.landzai-builder-nav').each(function () {
             var settings = $(this).data('landzai');
 
         // Js Start
-            $('.open_mobile_menu').on("click", function() {
-                $('.mobile_menu_wrap').toggleClass("mobile_menu_on");
+            jQuery(".menu-bar span").on("click", function () {
+                jQuery('.mobile-menu').addClass('open-menu');
+                jQuery('.menu-overlay').addClass('open')
             });
-            $('.open_mobile_menu').on('click', function () {
-                $('body').toggleClass('mobile_menu_overlay_on');
+
+            jQuery('.menu-overlay').on('click', function () {
+                jQuery('.mobile-menu').removeClass('open-menu')
+                jQuery('.menu-overlay').removeClass('open')
             });
-            if($('.mobile_menu li.dropdown ul').length){
-                $('.mobile_menu li.dropdown').append('<div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>');
-                $('.mobile_menu li.dropdown .dropdown-btn').on('click', function() {
+            /* Sub Menu Toggle*/
+            if($('.mobile-menu li.menu-item-has-children ul').length){
+                $('.mobile-menu li.menu-item-has-children').append('<div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>');
+                $('.mobile-menu li.menu-item-has-children .dropdown-btn').on('click', function() {
                     $(this).prev('ul').slideToggle(500);
                 });
             }
