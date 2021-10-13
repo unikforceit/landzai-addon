@@ -29,7 +29,7 @@
                                 <li><a href="#"><i class="far fa-clock"></i>'.display_read_time().' Min To Read</a></li>
                             </ul>
                             <p class="blog-cotent">' . get_the_excerpt() . '</p>
-                            <a href="' . get_the_permalink() . '" class="blog-btn">Read More</a>
+                            <a href="' . get_the_permalink() . ' " class="blog-btn">Read More</a>
                         </div>
                     </div>
                 </div>';
