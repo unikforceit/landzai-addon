@@ -158,6 +158,14 @@ class landzai_content_section extends Widget_Base
                         'title' => __( 'Six', 'landzai' ),
                         'icon' => 'eicon-post-slider',
                     ],
+                    'layout7' => [
+                        'title' => __( 'Seven', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
+                    ],
+                    'layout8' => [
+                        'title' => __( 'Eight', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
+                    ],
                 ],
                 'default' => 'layout1',
                 'toggle' => true,
@@ -178,7 +186,7 @@ class landzai_content_section extends Widget_Base
                 'label' => __( 'content List', 'landzai' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'condition' => [
-                    'layout' => 'layout5',
+                    'layout' => ['layout5','layout7','layout8'],
                 ],
                 'fields' => $repeater2->get_controls(),
                 'default' => [

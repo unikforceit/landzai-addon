@@ -6,14 +6,14 @@ if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
 
 
-class landzai_chooseus extends Widget_Base {
+class landzai_call_to_action extends Widget_Base {
 
     public function get_name() {
-        return 'landzai-chooseus';
+        return 'landzai-call-to-action';
     }
  
     public function get_title() {
-        return __('Choose Us', 'landzai');
+        return __('Call To Action', 'landzai');
     }
 
     public function get_icon() {
@@ -38,71 +38,86 @@ class landzai_chooseus extends Widget_Base {
             [
                 'label' => __( 'Title', 'landzai' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( 'What Are The Reasons For Choosing Us?', 'landzai' ),
+                'default' => __( 'Chap fantastic skive <br /> chancer knees up starkers', 'landzai' ),
             ]
         );
         $this->add_control(
-            'info',
+            'button1',
             [
-                'label' => __( 'Info', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
-                sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', 'landzai' ),
+                'label' => __('Button 1', 'landzai'),
+                'type' => Controls_Manager::TEXT,
+                'default' => __('Learn More', 'landzai'),
             ]
         );
-        $repeater = new \Elementor\Repeater();
-        $repeater->add_control(
-            'w_title',
-            [
-                'label' => __( 'Work Title', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( 'Build with Time Balanceing', 'landzai' ),
-            ]
-        );
-        $repeater->add_control(
-            'icon',
-            [
-                'label' => __( 'Icon', 'ahope' ),
-                'type' => \Elementor\Controls_Manager::ICONS,
+        $this->add_control(
+            'link1', [
+                'label' => __('Link 1', 'landzai'),
+                'type' => Controls_Manager::URL,
+                'show_external' => true,
                 'default' => [
-                    'value' => 'fas fa-user',
-                    'library' => 'solid',
+                    'url' => '#',
+                    'is_external' => true,
+                    'nofollow' => true,
                 ],
             ]
         );
         $this->add_control(
-            'work_list',
+            'button2',
             [
-                'label' => __( 'Work List', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
+                'label' => __('Button 2', 'landzai'),
+                'type' => Controls_Manager::TEXT,
+                'default' => __('Learn More', 'landzai'),
+            ]
+        );
+        $this->add_control(
+            'link2', [
+                'label' => __('Link 2', 'landzai'),
+                'type' => Controls_Manager::URL,
+                'show_external' => true,
                 'default' => [
-                    [
-                        'w_title' => __( 'Build with Time Balanceing', 'landzai' ),
+                    'url' => '#',
+                    'is_external' => true,
+                    'nofollow' => true,
+                ],
+            ]
+        );
+        $this->add_control(
+            'image_left',
+            [
+                'label' => __( 'Choose Image', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+        $this->add_control(
+            'image_right',
+            [
+                'label' => __( 'Choose Image', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+        $this->add_control(
+            'layout',
+            [
+                'label' => __( 'Layout', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'layout1' => [
+                        'title' => __( 'One', 'landzai' ),
+                        'icon' => 'eicon-form-horizontal',
                     ],
-                    [
-                        'w_title' => __( 'Build with Time Balanceing', 'landzai' ),
-                    ],
-                    [
-                        'w_title' => __( 'Build with Time Balanceing', 'landzai' ),
-                    ],
-                    [
-                        'w_title' => __( 'Build with Time Balanceing', 'landzai' ),
-                    ],
-                    [
-                        'w_title' => __( 'Build with Time Balanceing', 'landzai' ),
-                    ],
-                    [
-                        'w_title' => __( 'Build with Time Balanceing', 'landzai' ),
-                    ],
-                    [
-                        'w_title' => __( 'Build with Time Balanceing', 'landzai' ),
-                    ],
-                    [
-                        'w_title' => __( 'Build with Time Balanceing', 'landzai' ),
+                    'layout2' => [
+                        'title' => __( 'Two', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
                     ],
                 ],
-                'title_field' => '{{{ w_title }}}',
+                'default' => 'layout1',
+                'toggle' => true,
             ]
         );
         $this->end_controls_section();
@@ -204,37 +219,9 @@ class landzai_chooseus extends Widget_Base {
     protected function render(){
 
         $settings = $this->get_settings();
-        echo ' <!-- service area start here  -->
-        <section class="service-area section" id="category">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title text-center">
-                            <h2 class="title">'.$settings['title'].'</h2>
-                            <p class="sub-title">'.$settings['info'].'</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row m-b-30 ">';
-
-        if ($settings['work_list']) {
-            foreach ($settings['work_list'] as $work) {
-                echo '<div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-service text-center">
-                            <div class="service-icon">
-                                <i class="'.$work['icon']['value'].'"></i>
-                            </div>
-                            <h4 class="service-title">'.$work['w_title'].'</h4>
-                        </div>
-                    </div>';
-            }
-        }
-                echo '</div>
-            </div>
-        </section>
-        <!-- service area end here  -->';
+        include dirname(__FILE__). '/' . $settings['layout']. '.php';
     }
 
 
 }
-Plugin::instance()->widgets_manager->register_widget_type( new landzai_chooseus() );
+Plugin::instance()->widgets_manager->register_widget_type( new landzai_call_to_action() );

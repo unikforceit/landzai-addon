@@ -1,35 +1,38 @@
 <?php
-echo '<!-- work area start here  -->
-        <section class="work-area section" id="about" >
+echo '<!-- requirement-process area start here  -->
+        <section class="requirement-process section">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title text-center">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="section-title-five mb-45 text-center ">
                             <h2 class="title">'.$settings['title'].'</h2>
                             <p class="sub-title">'.$settings['info'].'</p>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-5 align-self-center">
-                        <div class="work-img">
-                            '.get_that_image($settings['image']).'
-                        </div>
-                    </div>
-                    <div class="col-lg-6 offset-lg-1 ">
-                        <div class="work-lsit work-slide">';
-
-if ($settings['work_list']) {
-    foreach ($settings['work_list'] as $work) {
-        echo '<div class="single-work">
-                                <h3>'.$work['w_title'].'</h3>
-                                <p>'.$work['w_info'].'</p>
-                            </div>';
-    }
-}
-echo '</div>
-                    </div>
-                </div>
+                <div class="row">';
+                if ($settings['work_list']) {
+                    foreach ($settings['work_list'] as $work) {
+                        echo '<div class="col-lg-3 col-md-6 col-sm-6">';
+                        if ($work['aro_image']['url']) {
+                            echo '<div class="top-arrow">
+                                    '.get_that_image($work['aro_image']).'
+                           </div>';
+                        }
+                        echo '<div class="single-requirement text-center">
+                            <div class="requirement-icon">'.get_that_image($work['w_image']).'</div>
+                            <h3>'.$work['w_title'].'</h3>
+                        </div>';
+                        if ($work['aro_image2']['url']) {
+                            echo '<div class="bottom-arrow">
+                                    '.get_that_image($work['aro_image2']).'
+                           </div>';
+                        }
+                        echo '
+                    </div>';
+                    }
+                }
+                echo '</div>
             </div>
         </section>
-        <!-- work area end here  -->';
+        <!-- requirement-process area end here  -->';

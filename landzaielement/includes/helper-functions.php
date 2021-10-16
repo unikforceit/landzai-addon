@@ -816,7 +816,7 @@ function landzai_list_control($settings, $icon, $tag="li"){
     }
 }
 function get_that_image($source, $class = 'image'){
-    if ($source){
+    if ($source['url']){
         $image = '<img class="'.$class.'" src="'. esc_url( $source['url'] ).'" alt="'.get_bloginfo( 'name' ).'">';
     }
     return $image;

@@ -119,6 +119,10 @@ class landzai_counter_step extends Widget_Base {
                         'title' => __( 'Two', 'landzai' ),
                         'icon' => 'eicon-post-slider',
                     ],
+                    'layout3' => [
+                        'title' => __( 'Three', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
+                    ],
                 ],
                 'default' => 'layout1',
                 'toggle' => true,

@@ -323,6 +323,23 @@
 
     };
 
+    var Landzaisinglecounter = function ($scope, $) {
+
+        $scope.find('.counter-area').each(function () {
+            var settings = $(this).data('landzai');
+
+            // Js Start
+            jQuery(".counter-list").appear(function () {
+                jQuery(".counter").counterUp({
+                    delay: 10,
+                    time: 1000,
+                });
+            });
+            // Js End
+        });
+
+    };
+
 
     $(window).on('elementor/frontend/init', function () {
         if (elementorFrontend.isEditMode()) {
@@ -336,6 +353,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial2);
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial3);
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial4);
+            elementorFrontend.hooks.addAction('frontend/element_ready/landzai-counter-step.default', Landzaisinglecounter);
         }
         else {
             console.log('Elementor frontend mod loaded');
@@ -347,6 +365,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial2);
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial3);
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial4);
+            elementorFrontend.hooks.addAction('frontend/element_ready/landzai-counter-step.default', Landzaisinglecounter);
         }
     });
 console.log('addon js loaded');

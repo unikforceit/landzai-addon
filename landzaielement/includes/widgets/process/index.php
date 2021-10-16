@@ -6,14 +6,14 @@ if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
 
 
-class landzai_howwork extends Widget_Base {
+class landzai_process extends Widget_Base {
 
     public function get_name() {
-        return 'landzai-howwork';
+        return 'landzai-process';
     }
  
     public function get_title() {
-        return __('How Work', 'landzai');
+        return __('Process', 'landzai');
     }
 
     public function get_icon() {
@@ -50,16 +50,7 @@ class landzai_howwork extends Widget_Base {
                  tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', 'landzai' ),
             ]
         );
-        $this->add_control(
-            'image',
-            [
-                'label' => __( 'Choose Image', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
+
         $repeater = new \Elementor\Repeater();
         $repeater->add_control(
             'w_title',
@@ -70,13 +61,33 @@ class landzai_howwork extends Widget_Base {
             ]
         );
         $repeater->add_control(
-            'w_info',
+            'w_image',
             [
-                'label' => __( 'Work Info', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                 Mattis viverra aliquam lectus nibh habitant rhoncus 
-                pellentesque etiam posuere. Gravida nunc id vulputate mauris amet, varius iuea er.', 'landzai' ),
+                'label' => __( 'Choose Image', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+        $repeater->add_control(
+            'aro_image',
+            [
+                'label' => __( 'Arrow Image', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+        $repeater->add_control(
+            'aro_image2',
+            [
+                'label' => __( 'Arrow Image', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
             ]
         );
         $this->add_control(
@@ -122,7 +133,7 @@ class landzai_howwork extends Widget_Base {
             ]
         );
         $this->end_controls_section();
-        
+
         $this->start_controls_section(
             'section_settings',
             [
@@ -226,4 +237,4 @@ class landzai_howwork extends Widget_Base {
 
 
 }
-Plugin::instance()->widgets_manager->register_widget_type( new landzai_howwork() );
+Plugin::instance()->widgets_manager->register_widget_type( new landzai_process() );

@@ -95,11 +95,23 @@ class landzai_services extends Widget_Base {
             ]
         );
         $this->add_control(
-            'btn',
+            'button',
             [
                 'label' => __( 'Button Icon', 'landzai' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __('VIEW', 'landzai'),
+                'default' => __('Explore', 'landzai'),
+            ]
+        );
+        $this->add_control(
+            'link', [
+                'label' => __('Link', 'landzai'),
+                'type' => Controls_Manager::URL,
+                'show_external' => true,
+                'default' => [
+                    'url' => '#',
+                    'is_external' => true,
+                    'nofollow' => true,
+                ],
             ]
         );
         $this->add_control(
