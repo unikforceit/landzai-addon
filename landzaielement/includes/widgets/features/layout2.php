@@ -30,11 +30,9 @@
                             }
                     echo '<div class="col-lg-4 col-md-6">
                     <div class="single-features text-center">
-                        <div class="features-icon '.$f_bg.'">';
-                        if (has_post_thumbnail()) {
-                            the_post_thumbnail('full');
-                        }
-                        echo '</div>
+                        <div class="features-icon '.$f_bg.'">
+                        <i class="'.landzai_feature_meta('feature_icon').'"></i>
+                        </div>
                         <div class="features-info">
                             <h3>' . get_the_title() . '</h3>
                             <p>' . get_the_excerpt() . '</p>

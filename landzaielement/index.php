@@ -141,11 +141,11 @@ if (!class_exists('LandzaiElement_Elementor_Addons')) :
             $tabs['landzaiicon'] = array(
                 'name'          => 'landzaiicon',
                 'label'         => esc_html__( 'Landzai', 'landzai' ),
-                'labelIcon'     => 'icon-chart',
-                'prefix'        => 'icon-',
+                'labelIcon'     => 'flaticon-check',
+                'prefix'        => 'flaticon-',
                 'displayPrefix' => 'landzai',
-                'url'           => Landzai_PLUGIN_URL . 'assets/css/landzai/landzai.css',
-                'fetchJson'     => Landzai_PLUGIN_URL . 'assets/css/landzai/fonts/landzai.json',
+                'url'           => Landzai_PLUGIN_URL . 'assets/css/landzai/icons/flaticon.css',
+                'fetchJson'     => Landzai_PLUGIN_URL . 'assets/css/landzai/icons/landzai.json',
                 'ver'           => '3.0.1',
             );
             return $tabs;

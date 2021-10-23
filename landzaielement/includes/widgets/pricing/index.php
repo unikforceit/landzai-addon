@@ -72,6 +72,10 @@ class landzai_pricing_table extends Widget_Base
                         'title' => __( 'Two', 'landzai' ),
                         'icon' => 'eicon-post-slider',
                     ],
+                    'layout3' => [
+                        'title' => __( 'Three', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
+                    ],
 
                 ],
                 'default' => 'layout1',
@@ -177,7 +181,7 @@ class landzai_pricing_table extends Widget_Base
             [
                 'label' => __('Yearly', 'landzai'),
                 'condition' => [
-                    'layout' => 'layout1',
+                    'layout' => ['layout1', 'layout2'],
                 ],
                 'tab' => Controls_Manager::TAB_CONTENT,
             ]
@@ -272,6 +276,15 @@ class landzai_pricing_table extends Widget_Base
             [
                 'label' => __('Style', 'landzai'),
                 'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'shape',
+                'label' => __('Shape', 'landzai'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .section-bg:after',
             ]
         );
         $this->add_control(

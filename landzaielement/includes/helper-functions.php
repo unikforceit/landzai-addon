@@ -36,9 +36,9 @@ function get_builder_image($url='',$class=''){
         }
     }
 
-    function landzai_doctor_meta($opt)
+    function landzai_feature_meta($opt)
     {
-        $options = get_post_meta(get_the_ID(), '_doctormeta', true);
+        $options = get_post_meta(get_the_ID(), '_featuremeta', true);
         if (isset($options[$opt])) {
             return $options[$opt];
         }
@@ -533,7 +533,7 @@ add_action( 'elementor/element/heading/section_title_style/before_section_start'
     $element->end_controls_section();
 }, 10, 2 );
 
-// Override Elementor Icon Elements
+// Override Elementor Button Elements
 
 add_action( 'elementor/element/button/section_style/before_section_start', function( $element, $args ) {
     /** @var \Elementor\Element_Base $element */
@@ -544,7 +544,18 @@ add_action( 'elementor/element/button/section_style/before_section_start', funct
             'label' => __( 'Landzai Settings', 'appilo' ),
         ]
     );
-
+    $element->add_control(
+        'btn_after',
+        [
+            'label'        =>   __( 'Turn On After', 'landzai' ),
+            'type'         => \Elementor\Controls_Manager::SWITCHER,
+            'label_on'     =>   __( 'Yes', 'landzai' ),
+            'label_off'    =>   __( 'No', 'landzai' ),
+            'return_value' => 'landzai-button-after',
+            'default'      => 'landzai-button-after-none',
+            'prefix_class' => '',
+        ]
+    );
     $element->start_controls_tabs( 'button_style' );
     $element->start_controls_tab(
         'button_normal',
@@ -764,6 +775,27 @@ add_action( 'elementor/element/icon/section_style_icon/before_section_start', fu
     $element->end_controls_section();
 }, 10, 2 );
 
+// Override Elementor Social Icons Elements
+
+add_action( 'elementor/element/social-icons/section_social_hover/before_section_start', function( $element, $args ) {
+    /** @var \Elementor\Element_Base $element */
+    $element->start_controls_section(
+        'saatext_style',
+        [
+            'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            'label' => __( 'Landzai Settings', 'appilo' ),
+        ]
+    );
+    $element->add_group_control(
+        \Elementor\Group_Control_Box_Shadow::get_type(),
+        [
+            'name' => 'social_shadow',
+            'label' => __( 'Icons Shadow', 'landzai' ),
+            'selector' => '{{WRAPPER}} .elementor-social-icon',
+        ]
+    );
+    $element->end_controls_section();
+}, 10, 2 );
 
 function ae_drop_taxolist(){
 

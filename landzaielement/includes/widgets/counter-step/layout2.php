@@ -15,7 +15,7 @@
                         foreach ($settings['counter_list'] as $counter) {
                             echo '<div class="single-counter ">
                             <div class="counter-number">
-                                <span class="counter">'.$counter['counter_number'].'</span><span>K</span>
+                                <span>'.$counter['counter_pre'].'</span><span class="counter">'.$counter['counter_number'].'</span><span><span>'.$counter['counter_suff'].'</span></span>
                             </div>
                             <h4 class="counter-title">'.$counter['counter_title'].'</h4>
                         </div>';

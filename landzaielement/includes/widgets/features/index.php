@@ -49,21 +49,6 @@ class landzai_features extends Widget_Base {
             ]
         );
         $this->add_control(
-            'link', [
-                'label' => __('Button Link', 'landzai'),
-                'type' => Controls_Manager::URL,
-                'condition' => [
-                    'layout' => 'layout3',
-                ],
-                'show_external' => true,
-                'default' => [
-                    'url' => '#',
-                    'is_external' => true,
-                    'nofollow' => true,
-                ],
-            ]
-        );
-        $this->add_control(
             'query_type',
             [
                 'label' => __('Query type', 'landzai'),

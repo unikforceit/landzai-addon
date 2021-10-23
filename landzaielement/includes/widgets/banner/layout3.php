@@ -12,7 +12,7 @@
                         <p>'.$settings['info'].'</p>
                         <ul class="banner-btn-list">
                             <li><a class="primary-btn-three" '.get_that_link($settings['link1']).'>'.$settings['button1'].'</a></li>
-                            <li><a class="primary-btn-three active" '.get_that_link($settings['link2']).'>'.$settings['button1'].'</a></li>
+                            <li><a class="primary-btn-three active" '.get_that_link($settings['link2']).'>'.$settings['button2'].'</a></li>
                         </ul>
                     </div>
                 </div>

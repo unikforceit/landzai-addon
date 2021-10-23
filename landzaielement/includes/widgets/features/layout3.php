@@ -6,7 +6,6 @@
                 <div class="col-lg-8 offset-lg-2">
                     <div class="section-title-four mb-45 text-center ">
                         <h2 class="title">'.$settings['title'].'</span></h2>
-                        <p class="sub-title">'.$settings['info'].'</p>
                     </div>
                 </div>
             </div>
@@ -23,15 +22,13 @@
                         }
                     echo '<div class="col-lg-4 col-md-6">
                     <div class="single-features text-center">
-                        <div class="features-icon '.$f_bg.'">';
-                        if (has_post_thumbnail()) {
-                            the_post_thumbnail('full');
-                        }
-                        echo '</div>
+                        <div class="features-icon '.$f_bg.'">
+                         <i class="'.landzai_feature_meta('feature_icon').'"></i>
+                        </div>
                         <div class="features-info">
                             <h3>' . get_the_title() . '</h3>
                             <p>' . get_the_excerpt() . '</p>
-                            <a class="arrow-btn" '.get_that_link($settings['link']).'><i class="fas fa-arrow-right"></i></a>
+                            <a class="arrow-btn" href="#"><i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>';

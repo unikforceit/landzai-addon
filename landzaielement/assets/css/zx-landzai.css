@@ -33,4 +33,34 @@
     transition: 0.3s all ease-in-out;
     box-shadow: 0 3px 18px rgba(2, 21, 78, 0.09);
 }
-
+.landzai-button-after .elementor-button {
+    position: relative;
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    z-index: 1;
+    overflow: hidden;
+    -webkit-animation: btnanimation 1s infinite linear;
+    animation: btnanimation 1s infinite linear;
+}
+.landzai-button-after .elementor-button:after {
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #1db374;
+    z-index: -1;
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: top;
+    transform-origin: top;
+    opacity: 0;
+}
+.landzai-button-after .elementor-button:hover::after {
+    opacity: 1;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}

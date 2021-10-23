@@ -23,7 +23,7 @@ function cs_framework_init_check() {
           require_once LANDZAI_PLUG_DIR .'/vendor/configstar/customiser.php';
           require_once LANDZAI_PLUG_DIR .'/vendor/configstar/pagemeta.php';
           require_once LANDZAI_PLUG_DIR . '/vendor/configstar/servicemeta.php';
-          require_once LANDZAI_PLUG_DIR . '/vendor/configstar/doctormeta.php';
+          require_once LANDZAI_PLUG_DIR . '/vendor/configstar/featuremeta.php';
           require_once LANDZAI_PLUG_DIR .'/vendor/admin-pages/admin.php';
           require_once LANDZAI_PLUG_DIR . '/vendor/demo/includes/demo-importer.php';
 

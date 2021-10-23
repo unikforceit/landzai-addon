@@ -85,6 +85,22 @@ class landzai_counter_step extends Widget_Base {
                 'default' => __( 'Landzai', 'landzai' ),
             ]
         );
+        $repeater->add_control(
+            'counter_pre',
+            [
+                'label' => __( 'Counter Prefix', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __( '$', 'landzai' ),
+            ]
+        );
+        $repeater->add_control(
+            'counter_suff',
+            [
+                'label' => __( 'Counter Suffix', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __( 'K', 'landzai' ),
+            ]
+        );
         $this->add_control(
             'counter_list',
             [
@@ -134,6 +150,9 @@ class landzai_counter_step extends Widget_Base {
             [
                 'label' => __( 'Layout-1 Bottom Content', 'landzai' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                'condition' => [
+                    'layout' => 'layout1',
+                ],
             ]
         );
         $repeater2 = new \Elementor\Repeater();
@@ -181,6 +200,15 @@ class landzai_counter_step extends Widget_Base {
             [
                 'label' => __( 'General', 'landzai' ),
                 'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'shape',
+                'label' => __('Shape', 'landzai'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .section-bg:after',
             ]
         );
         $this->add_control(

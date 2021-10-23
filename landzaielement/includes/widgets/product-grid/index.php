@@ -237,7 +237,7 @@ class landzai_woo_grid extends Widget_Base {
                         while ($wp_query->have_posts()) {
                             $wp_query->the_post();
                             echo '<div class="col-lg-4 col-md-6">
-                            <div class="single-product text-center">
+                            <div class="single-product-home3 text-center">
                                 <div class="product-thumbnail">
                                     <a href="'.get_the_permalink().'">
                                     '.woocommerce_get_product_thumbnail('woocommerce_full_size').'
@@ -245,7 +245,7 @@ class landzai_woo_grid extends Widget_Base {
                                 </div>
                                 <div class="product-info">
                                     <h3 class="product-name"><a href="'.get_the_permalink().'">' . get_the_title() . '</a></h3>
-                                    <h2 class="poduct-price">'.$product->get_price_html().'</h2>
+                                    <h2 class="poduct-price">'.landzai_reg_price().'</h2>
                                     <a class="primary-btn-three active" href="'.get_the_permalink().'">Order Now</a>
                                 </div>
                             </div>

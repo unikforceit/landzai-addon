@@ -44,28 +44,27 @@ if ( is_multisite() ) {
 
        
         printf( '<a href="%s" class="nav-tab">%s</a>', admin_url( 'admin.php?page=ae-demo-importer' ), __( 'Demo Import', 'landzai' ) );
-        printf( '<a href="%s" class="nav-tab">%s</a>', admin_url( 'admin.php?page=landzai-license' ), __( 'License', 'landzai' ) );
         ?>
     </h2>
     
    
     <div class="landzai-section nav-tab-active" id="welcome">
         <p class="about-description">
-            <?php printf( __( 'Before you get started, please be sure to always check out documentation Which Included In the theme folder or from <a href="https://themexriver.helpviser.com/" target="_blank">Website</a>. We outline all kinds of good information and provide you with all the details you need to use landzai.', 'landzai')); ?>
+            <?php printf( __( 'Before you get started, please be sure to always check out documentation Which Included In the theme folder or from <a href="https://support.matethemes.com/support" target="_blank">Website</a>. We outline all kinds of good information and provide you with all the details you need to use landzai.', 'landzai')); ?>
         </p>
         <p class="about-description">
-            <?php printf( __( 'If you are unable to find your answer in our documentation, please contact us via  <a href="https://themexriver.helpviser.com/" target="_blank">submit a ticket</a> with your purchase code, site CPanel, and admin login info.', 'landzai'), 'mailto:support@themexriver.com'); ?>
+            <?php printf( __( 'If you are unable to find your answer in our documentation, please contact us via  <a href="https://support.matethemes.com/support" target="_blank">submit a ticket</a> with your purchase code, site CPanel, and admin login info.', 'landzai'), 'mailto:support@matethemes.com'); ?>
         </p>
         <p class="about-description">
-            <?php printf( __( 'We are very happy to help you and you will get the reply from us  faster than you expected.', 'landzai'), 'https://themexriver.helpviser.com/'); ?>
+            <?php printf( __( 'We are very happy to help you and you will get the reply from us  faster than you expected.', 'landzai'), 'https://support.matethemes.com/support'); ?>
         </p>
         
         <p class="about-description">
-            <?php printf( __( 'Note: Please Install All Required Plugins Before Install Demo !', 'landzai'), 'https://wp.themexriver.com/landzai-landing/'); ?>
+            <?php printf( __( 'Note: Please Install All Required Plugins Before Install Demo !', 'landzai'), 'https://wp.matethemes.com/landzai/demo'); ?>
         </p>
     </div>
     <div class="landzai-thanks">
-        <p class="description">Thank you for using <strong>landzai</strong> theme! Powered by <a href="https://themexriver.com" target="_blank">ThemeXriver</a></p>
+        <p class="description">Thank you for using <strong>landzai</strong> theme! Powered by <a href="https://matethemes.com" target="_blank">Mate_Themes</a></p>
     </div>
     
     

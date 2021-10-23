@@ -128,6 +128,15 @@ class landzai_blog extends Widget_Base {
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            [
+                'name' => 'shape',
+                'label' => __('Shape', 'landzai'),
+                'types' => ['classic', 'gradient'],
+                'selector' => '{{WRAPPER}} .section-bg:after',
+            ]
+        );
         $this->add_control(
             'post_title_color',
             [

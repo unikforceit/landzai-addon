@@ -19,7 +19,7 @@
         $index = 0;
         foreach ($settings['faq_list'] as $faq) {
             $index++;
-            if ($index == 0){
+            if ($index == 1){
                 $show = 'show';
                 $collapsed = '';
             } else {

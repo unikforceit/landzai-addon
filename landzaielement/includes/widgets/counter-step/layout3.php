@@ -6,7 +6,7 @@
                 if ($settings['counter_list']) {
                     foreach ($settings['counter_list'] as $counter) {
                         echo '<div class="single-counter text-center">
-                        <h2><span class="counter">'.$counter['counter_number'].'</span><span>+</span></h2>
+                        <h2><span>'.$counter['counter_pre'].'</span><span class="counter">'.$counter['counter_number'].'</span><span>'.$counter['counter_suff'].'</span></h2>
                         <p>'.$counter['counter_title'].'</p>
                     </div>';
                     }
