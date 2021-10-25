@@ -8,6 +8,8 @@
 			add_action('init', array(&$this,'create_builder_post_taxonomy'));
             add_action('init', array(&$this, 'create_services_cpt'));
             add_action('init', array(&$this, 'services_taxonomy'), 0);
+            add_action('init', array(&$this, 'create_project_cpt'));
+            add_action('init', array(&$this, 'project_taxonomy'), 0);
             add_action('init', array(&$this, 'create_features_cpt'));
             add_action('init', array(&$this, 'features_taxonomy'), 0);
 
@@ -116,6 +118,60 @@
                 'rewrite' => array('slug' => 'service_category'),
             );
             register_taxonomy('service_category', 'services', $args);
+        }
+
+        // Project Post type
+        function create_project_cpt() {
+            $labels = array(
+                'name' => __('Project', 'landzai'),
+                'singular_name' => __('Project', 'landzai'),
+                'add_new' => __('Add project', 'landzai'),
+                'add_new_item' => __('Add project', 'landzai'),
+                'edit_item' => __('Edit project', 'landzai'),
+                'new_item' => __('New project', 'landzai'),
+                'all_items' => __('All project', 'landzai'),
+                'view_item' => __('View project', 'landzai'),
+                'search_items' => __('Search project', 'landzai'),
+                'not_found' => __('No project found', 'landzai'),
+                'not_found_in_trash' => __('No portfolio found in the trash', 'landzai'),
+                'parent_item_colon' => '',
+                'supports' => array('post-formats'),
+                'menu_name' => __('Projects', 'landzai')
+            );
+            $args = array(
+                'labels' => $labels,
+                'public' => true,
+                'menu_position' => 5,
+                'menu_icon' => 'dashicons-megaphone',
+                'taxonomies' => array('project_cat'),
+                'supports' => array('title', 'editor', 'thumbnail', 'excerpt','elementor'),
+                'has_archive' => true,
+            );
+            register_post_type('project', $args);
+        }
+
+        function project_taxonomy() {
+            $labels = array(
+                'name' => __('Category', 'landzai'),
+                'singular_name' => __('Category', 'landzai'),
+                'search_items' => __('Search categories', 'landzai'),
+                'all_items' => __('Categories', 'landzai'),
+                'parent_item' => __('Parent category', 'landzai'),
+                'parent_item_colon' => __('Parent category:', 'landzai'),
+                'edit_item' => __('Edit category', 'landzai'),
+                'update_item' => __('Update category', 'landzai'),
+                'add_new_item' => __('Add category', 'landzai'),
+                'new_item_name' => __('New category', 'landzai'),
+                'menu_name' => __('Category', 'landzai'),
+            );
+            $args = array(
+                'labels' => $labels,
+                'hierarchical' => true,
+                'show_ui' => true,
+                'show_admin_column' => true,
+                'rewrite' => array('slug' => 'project_cat'),
+            );
+            register_taxonomy('project_cat', 'project', $args);
         }
 
        // Doctor Post Type

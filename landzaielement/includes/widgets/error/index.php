@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-class Widget_Landzai_breadcrumb extends Widget_Base {
+class Widget_Landzai_error extends Widget_Base {
 
 	/**
 	 * Get widget name.
@@ -25,7 +25,7 @@ class Widget_Landzai_breadcrumb extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'landzai-breadcrumb';
+		return 'landzai-error';
 	}
 
 	/**
@@ -39,7 +39,7 @@ class Widget_Landzai_breadcrumb extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Landzai Breadcrumb', 'landzai' );
+		return esc_html__( 'Landzai Error', 'landzai' );
 	}
 
 	/**
@@ -98,17 +98,9 @@ class Widget_Landzai_breadcrumb extends Widget_Base {
 		$this->start_controls_section(
 			'section_image',
 			[
-				'label' => esc_html__( 'Site breadcrumb', 'landzai' ),
+				'label' => esc_html__( 'Site Error Template', 'landzai' ),
 			]
 		);
-
-        $this->add_control(
-            'custom_breadcrumb_upload',
-            [
-                'label' => __( 'Choose Custom breadcrumb', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-            ]
-        );
 
 		$this->add_responsive_control(
 			'align',
@@ -150,54 +142,17 @@ class Widget_Landzai_breadcrumb extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-
-        if (is_home() && get_option('page_for_posts') ) {
-            $img = wp_get_attachment_image_src(get_post_thumbnail_id(get_option('page_for_posts')),'full');
-            $url = isset($img[0]);
-        } else {
-            if ( $settings['custom_breadcrumb_upload']['id'] ) {
-                $url = $settings['custom_breadcrumb_upload']['url'];
-            } else {
-                $url = get_the_post_thumbnail_url();
-            }
-        }
-        $arg = [
-            'cat' => '<span class="niotitle">'.esc_html__('Category','landzai').'</span>',
-            'tag' => '<span  class="niotitle">'.esc_html__('Tag','landzai').'</span>',
-            'author' => '<span  class="niotitle">'.esc_html__('Author','landzai').'</span>',
-            'year' => '<span  class="niotitle">'.esc_html__('Year','landzai').'</span>',
-            'notfound' => '<span  class="niotitle">'.esc_html__('Not found','landzai').'</span>',
-            'search' => '<span  class="niotitle">'.esc_html__('Search for','landzai').'</span>',
-            'marchive' => '<span  class="niotitle">'.esc_html__('Monthly archive','landzai').'</span>',
-            'yarchive' => '<span  class="niotitle">'.esc_html__('Yearly archive','landzai').'</span>',
-        ];
-
-        if (is_home() && get_option('page_for_posts')  ) {
-            $title = 'Blog';
-        } elseif (is_front_page()){
-            $title = 'Front Page';
-        }else {
-            $title = get_the_title();
-        }
         ?>
-        <!-- breadcrumb ara start here  -->
-        <section class="breadcrumb-area"
-                 data-background="<?php echo esc_url($url); ?>">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="breadcrumb-wrap text-center">
-                            <h2 class="page-title"><?php echo esc_html($title); ?></h2>
-                            <?php landzai_unit_breadcumb(); ?>
-                        </div>
-                    </div>
-                </div>
+        <!-- error page area start here  -->
+        <section class="error-page">
+            <div class="error-page-wrap">
+                <h2 class="error-code">404</h2>
+                <p class="error-text">We are sorry, the page you've requeted id not available.</p>
+                <a href="<?php echo esc_url(home_url('/'))?>" class="back-home-btn">back to the home page</a>
             </div>
         </section>
-        <!-- breadcrumb ara end here  -->
-        <?php
-
-	}
+        <!-- error page area end here  -->
+	<?php }
 
 	/**
 	 * Render image widget output in the editor.
@@ -209,4 +164,4 @@ class Widget_Landzai_breadcrumb extends Widget_Base {
 	 */
 	protected function content_template() {	}
 }
-Plugin::instance()->widgets_manager->register_widget_type( new Widget_Landzai_breadcrumb() );
+Plugin::instance()->widgets_manager->register_widget_type( new Widget_Landzai_error() );

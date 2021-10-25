@@ -61,6 +61,16 @@ class landzai_process extends Widget_Base {
             ]
         );
         $repeater->add_control(
+            'w_info',
+            [
+                'label' => __( 'Work Info', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pretium dapibus nisl,
+                 odio dictum nisi, ultrices eget ac egestas. Sit sed enim magna senectus.
+                 Nam potenti commodo tempus, laoreet scelerisque id nisl. Urna urna, commodo metus', 'landzai' ),
+            ]
+        );
+        $repeater->add_control(
             'w_image',
             [
                 'label' => __( 'Choose Image', 'landzai' ),

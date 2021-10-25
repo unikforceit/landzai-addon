@@ -167,6 +167,10 @@ class landzai_faq extends Widget_Base {
                         'title' => __( 'Layout 2', 'landzai' ),
                         'icon' => 'eicon-post-slider',
                     ],
+                    'layout3' => [
+                        'title' => __( 'Layout 3', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
+                    ],
                 ],
                 'default' => 'layout1',
                 'toggle' => true,

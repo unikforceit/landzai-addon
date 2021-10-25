@@ -33,6 +33,25 @@ class landzai_brand extends Widget_Base {
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
+        $this->add_control(
+            'layout',
+            [
+                'label' => __( 'Layout', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'brands-area' => [
+                        'title' => __( 'One', 'landzai' ),
+                        'icon' => 'eicon-form-horizontal',
+                    ],
+                    'brands-section' => [
+                        'title' => __( 'Two', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
+                    ],
+                ],
+                'default' => 'brands-area',
+                'toggle' => true,
+            ]
+        );
         $repeater = new \Elementor\Repeater();
         $repeater->add_control(
             'title',
@@ -193,7 +212,7 @@ class landzai_brand extends Widget_Base {
 
         $settings = $this->get_settings();
             echo '<!-- brands area start here  -->
-        <div class="brands-area">
+        <div class="brands-areas '.$settings['layout'].'">
             <div class="container">
                 <div class="brand-list slide-brands">';
         if ($settings['brand_list']) {

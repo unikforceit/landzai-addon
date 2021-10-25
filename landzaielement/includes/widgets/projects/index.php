@@ -6,14 +6,14 @@ if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
 
 
-class landzai_testimonial extends Widget_Base {
+class landzai_project extends Widget_Base {
 
     public function get_name() {
-        return 'landzai-testimonial';
+        return 'landzai-project';
     }
  
     public function get_title() {
-        return __('Testimonail', 'landzai');
+        return __('Project Filter', 'landzai');
     }
 
     public function get_icon() {
@@ -27,7 +27,7 @@ class landzai_testimonial extends Widget_Base {
     protected function _register_controls() {
 
         $this->start_controls_section(
-            'content_section',
+            'product_feature_section',
             [
                 'label' => __( 'Content', 'landzai' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
@@ -38,121 +38,41 @@ class landzai_testimonial extends Widget_Base {
             [
                 'label' => __( 'Title', 'landzai' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( 'What Our Client Says', 'landzai' ),
+                'default' => __( 'Compleate <span class="color-two">Projects</span> By Our Team', 'landzai' ),
             ]
         );
         $this->add_control(
-            'info',
-            [
-                'label' => __( 'Info', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                 tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', 'landzai' ),
-            ]
-        );
-        $repeater = new \Elementor\Repeater();
-        $repeater->add_control(
-            't_title',
-            [
-                'label' => __( 'Title', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( 'Jerome Bell', 'landzai' ),
-            ]
-        );
-        $repeater->add_control(
-            't_subtitle',
+            'stitle',
             [
                 'label' => __( 'Sub Title', 'landzai' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( 'CEO, Angular Corporation', 'landzai' ),
-            ]
-        );
-        $repeater->add_control(
-            't_info',
-            [
-                'label' => __( 'Info', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( '“Lorem ipsum dolor sit amet,  kasd gubergren, no sea takimata dolores et ea rebum. Stet clita ', 'landzai' ),
-            ]
-        );
-        $repeater->add_control(
-            'thumb',
-            [
-                'label' => __( 'Choose Image', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-        $repeater->add_control(
-            't_link', [
-                'label' => __('Link', 'landzai'),
-                'type' => Controls_Manager::URL,
-                'show_external' => true,
-                'default' => [
-                    'url' => '#',
-                    'is_external' => true,
-                    'nofollow' => true,
-                ],
+                'default' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet,, lacus  non massa id amet tincidunt. Lacus ut integer blandit diam.', 'landzai' ),
             ]
         );
         $this->add_control(
-            'testi_list',
+            'cat_query',
             [
-                'label' => __( 'Testimonial List', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'default' => [
-                    [
-                        't_title' => __( 'Savannah Nguyen', 'landzai' ),
-                    ],
-                     [
-                        't_title' => __( 'Savannah Nguyen', 'landzai' ),
-                    ],
-                     [
-                        't_title' => __( 'Savannah Nguyen', 'landzai' ),
-                    ],
-                     [
-                        't_title' => __( 'Savannah Nguyen', 'landzai' ),
-                    ],
-                     [
-                        't_title' => __( 'Savannah Nguyen', 'landzai' ),
-                    ],
-
-                ],
-                'title_field' => '{{{ t_title }}}',
+                'label' => __('Category', 'landzai'),
+                'type' => Controls_Manager::SELECT2,
+                'options' => ae_drop_cat('project_cat'),
+                'multiple' => true,
+                'label_block' => true,
             ]
         );
         $this->add_control(
-            'layout',
+            'show_cat',
             [
-                'label' => __( 'Layout', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
-                'options' => [
-                    'layout1' => [
-                        'title' => __( 'One', 'landzai' ),
-                        'icon' => 'eicon-form-horizontal',
-                    ],
-                    'layout2' => [
-                        'title' => __( 'Two', 'landzai' ),
-                        'icon' => 'eicon-post-slider',
-                    ],
-                    'layout3' => [
-                        'title' => __( 'Three', 'landzai' ),
-                        'icon' => 'eicon-post-slider',
-                    ],
-                    'layout4' => [
-                        'title' => __( 'Four', 'landzai' ),
-                        'icon' => 'eicon-post-slider',
-                    ],
-                    'layout5' => [
-                        'title' => __( 'Five', 'landzai' ),
-                        'icon' => 'eicon-post-slider',
-                    ],
-                ],
-                'default' => 'layout1',
-                'toggle' => true,
+                'label' => esc_html__('Show Category', 'landzai'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'default' => esc_html__('5', 'landzai'),
+            ]
+        );
+        $this->add_control(
+            'posts_per_page',
+            [
+                'label' => __('Posts Per Page', 'landzai'),
+                'type' => Controls_Manager::NUMBER,
+                'default' => 6,
             ]
         );
         $this->end_controls_section();
@@ -247,25 +167,86 @@ class landzai_testimonial extends Widget_Base {
                 ],
             ]
         );
-        $this->add_group_control(
-			\Elementor\Group_Control_Background::get_type(),
-			[
-				'name' => 'background',
-				'label' => __( 'Background', 'landzai' ),
-				'types' => [ 'classic', 'gradient' ],
-				'selector' => '{{WRAPPER}} .testimonial-four-area',
-			]
-		);
         $this->end_controls_section();
 
     }
         
     protected function render(){
 
-        $settings = $this->get_settings();
-        include dirname(__FILE__). '/' . $settings['layout']. '.php';
+        $settings = $this->get_settings_for_display();
+
+            $tax_args = array(
+                'taxonomy' => 'project_cat',
+                'number' => $settings['show_cat'],
+                'include' => $settings['cat_query'],
+                'hide_empty' => false,
+            );
+            $the_query = new \WP_Query(array(
+                'post_type' => 'project',
+                'posts_per_page' => $settings['posts_per_page'],
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'project_cat',
+                        'field' => 'term_id',
+                        'terms' => $settings['cat_query'],
+                    )
+                )
+            ));
+            $categories = get_terms($tax_args);
+            echo ' <!-- portfolio area start here  -->
+        <section class="portfolio-area section-top pb-90 ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="section-title-four mb-45 text-center ">
+                             <h2 class="title">'.$settings['title'].'</h2>
+                            <p class="sub-title">'.$settings['stitle'].'</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="filtering-menu-area">
+                            <ul class="filtering-button">
+                                <li class="active" data-filter="*">All Work</li>';
+                                foreach ($categories as $category) {
+                                    echo '<li data-filter=".' . $category->slug . '">' . $category->name . '</li>';
+                                }
+                            echo '</ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row grid fix">';
+                if ($the_query->have_posts()) {
+                    while ($the_query->have_posts()) {
+                        $the_query->the_post();
+                        $project_id = get_the_ID();
+                        $post_categories = get_the_terms( $project_id, 'project_cat' );
+                        foreach ($post_categories as $cats){
+                            $cat[] = $cats->slug;
+                        }
+                        $filter = implode(' ', $cat);
+                            echo '<div class="grid-item col-lg-4 col-md-6 '.$filter.'">
+                        <div class="single-portfolio">
+                            <a href="#" class="single-image">
+                                ' . get_the_post_thumbnail() . '
+                            </a>
+                            <div class="portfolio-content">
+                                <h3><a href="#">' . get_the_title() . '</a></h3>
+                                <p>' . get_the_excerpt() . '</p>
+                                <a class="explore-btn" href="#">Explore <i class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                        </div>
+                    </div>';
+                    }
+                    wp_reset_postdata();
+                }
+                echo '</div>
+            </div>
+        </section>
+        <!-- portfolio area end here  -->';
     }
 
 
 }
-Plugin::instance()->widgets_manager->register_widget_type( new landzai_testimonial() );
+Plugin::instance()->widgets_manager->register_widget_type( new landzai_project() );

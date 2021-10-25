@@ -6,6 +6,7 @@
                 <div class="col-lg-8 offset-lg-2">
                     <div class="section-title-four mb-45 text-center ">
                         <h2 class="title">'.$settings['title'].'</span></h2>
+                        <p class="sub-title">'.$settings['info'].'</p>
                     </div>
                 </div>
             </div>

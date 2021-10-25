@@ -76,7 +76,7 @@
 
     var LandzaiBrand = function ($scope, $) {
 
-        $scope.find('.brands-area').each(function () {
+        $scope.find('.brands-areas').each(function () {
             var settings = $(this).data('landzai');
 
         // Js Start
@@ -322,7 +322,31 @@
         });
 
     };
+    var LandzaiTestimonial5 = function ($scope, $) {
 
+        $scope.find('.testimonial-five-area').each(function () {
+            var settings = $(this).data('landzai');
+
+            // Js Start
+            /*-------------------------------------------
+    testimonial-slide-five active
+    --------------------------------------------- */
+            $(".testimonial-slide-five").slick({
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                dots: false,
+                arrows: true,
+                prevArrow: '<i class="arow-prev fas fa-chevron-left"></i>',
+                nextArrow: '<i class="arow-next fas fa-chevron-right"></i>',
+            });
+            // Js End
+        });
+
+    };
     var Landzaisinglecounter = function ($scope, $) {
 
         $scope.find('.counter-area').each(function () {
@@ -335,6 +359,45 @@
                     time: 1000,
                 });
             });
+            // Js End
+        });
+
+    };
+    var LandzaiProject = function ($scope, $) {
+
+        $scope.find('.portfolio-area').each(function () {
+            var settings = $(this).data('landzai');
+
+            // Js Start
+            /*---------------------------------
+    isotope activation
+    -----------------------------------*/
+            $('.grid').appear(function() {
+                // filter items on button click
+                $('.filtering-button').on('click', 'li', function () {
+                    var filterValue = $(this).attr('data-filter');
+                    $grid.isotope({ filter: filterValue });
+                });
+                var $grid = $('.grid').isotope({
+                    // set itemSelector so .grid-sizer is not used in layout
+                    itemSelector: '.grid-item',
+                    percentPosition: true,
+                    animationOptions: {
+                        duration: 500,
+                        easing: 'zoom-in'
+                    },
+                    masonry: {
+                        // use element for option
+                        columnWidth: '.grid-item'
+                    },
+                    transitionDuration: '.9s'
+                })
+                $('.filtering-button li').on('click',  function () {
+                    $('.filtering-button li').removeClass('active');
+                    $(this).addClass('active');
+                });
+            });
+
             // Js End
         });
 
@@ -353,7 +416,9 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial2);
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial3);
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial4);
+            elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial5);
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-counter-step.default', Landzaisinglecounter);
+            elementorFrontend.hooks.addAction('frontend/element_ready/landzai-project.default', LandzaiProject);
         }
         else {
             console.log('Elementor frontend mod loaded');
@@ -365,7 +430,9 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial2);
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial3);
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial4);
+            elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial5);
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-counter-step.default', Landzaisinglecounter);
+            elementorFrontend.hooks.addAction('frontend/element_ready/landzai-project.default', LandzaiProject);
         }
     });
 console.log('addon js loaded');

@@ -50,7 +50,25 @@ class landzai_team extends Widget_Base {
                  tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', 'landzai' ),
             ]
         );
-        
+        $this->add_control(
+            'layout',
+            [
+                'label' => __( 'Title Layout', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'four' => [
+                        'title' => __( 'One', 'landzai' ),
+                        'icon' => 'eicon-form-horizontal',
+                    ],
+                    'five' => [
+                        'title' => __( 'Two', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
+                    ],
+                ],
+                'default' => 'four',
+                'toggle' => true,
+            ]
+        );
         $repeater = new \Elementor\Repeater();
         $repeater->add_control(
             'image',
@@ -273,7 +291,7 @@ class landzai_team extends Widget_Base {
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
-                        <div class="section-title-four mb-45 text-center ">
+                        <div class="section-title-'.$settings['layout'].' mb-45 text-center ">
                             <h2 class="title">'.$settings['title'].'</h2>
                             <p class="sub-title">'.$settings['info'].'</p>
                         </div>
