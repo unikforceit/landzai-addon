@@ -153,7 +153,7 @@ class Widget_Landzai_breadcrumb extends Widget_Base {
 
         if (is_home() && get_option('page_for_posts') ) {
             $img = wp_get_attachment_image_src(get_post_thumbnail_id(get_option('page_for_posts')),'full');
-            $url = isset($img[0]);
+            $url = isset($img[0]) ? $img[0] : '';
         } else {
             if ( $settings['custom_breadcrumb_upload']['id'] ) {
                 $url = $settings['custom_breadcrumb_upload']['url'];

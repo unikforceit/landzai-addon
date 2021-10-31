@@ -198,6 +198,14 @@ CSF::createSection( $prefix, array(
       'multiple'    => false,
       'options'     => landzaielement_footer_select('landzai_builders'),
     ),
+    array(
+          'id'          => 'sidebar_left',
+          'type'        => 'select',
+          'title'       => 'Sidebar Left',
+          'chosen'      => true,
+          'multiple'    => false,
+          'options'     => landzaielement_footer_select('landzai_builders'),
+        ),
 
       array(
       'id'          => 'footer_widget',

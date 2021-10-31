@@ -114,6 +114,10 @@ class landzai_features extends Widget_Base {
                         'title' => __( 'Three', 'landzai' ),
                         'icon' => 'eicon-post-slider',
                     ],
+                    'layout4' => [
+                        'title' => __( 'Four', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
+                    ],
                 ],
                 'default' => 'layout1',
                 'toggle' => true,

@@ -75,6 +75,16 @@ class landzai_project extends Widget_Base {
                 'default' => 6,
             ]
         );
+        $this->add_control(
+            'bgs',
+            [
+                'label' => __( 'Image', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
         $this->end_controls_section();
         
         $this->start_controls_section(
@@ -194,7 +204,7 @@ class landzai_project extends Widget_Base {
             ));
             $categories = get_terms($tax_args);
             echo ' <!-- portfolio area start here  -->
-        <section class="portfolio-area section-top pb-90 ">
+        <section class="portfolio-area section-top pb-90 " data-background="'.$settings['bgs']['url'].'">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">

@@ -1,19 +1,18 @@
 <?php
-
 namespace Elementor;
 
 if (!defined('ABSPATH')) 
     exit; // Exit if accessed directly
 
 
-class landzai_brand extends Widget_Base {
+class landzai_contactus extends Widget_Base {
 
     public function get_name() {
-        return 'landzai-brand';
+        return 'landzai-contactus';
     }
  
     public function get_title() {
-        return __('Brand', 'landzai');
+        return __('Contact Us', 'landzai');
     }
 
     public function get_icon() {
@@ -34,34 +33,33 @@ class landzai_brand extends Widget_Base {
             ]
         );
         $this->add_control(
-            'layout',
-            [
-                'label' => __( 'Layout', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
-                'options' => [
-                    'brands-area' => [
-                        'title' => __( 'One', 'landzai' ),
-                        'icon' => 'eicon-form-horizontal',
-                    ],
-                    'brands-section' => [
-                        'title' => __( 'Two', 'landzai' ),
-                        'icon' => 'eicon-post-slider',
-                    ],
-                ],
-                'default' => 'brands-area',
-                'toggle' => true,
-            ]
-        );
-        $repeater = new \Elementor\Repeater();
-        $repeater->add_control(
             'title',
             [
-                'label' => __( 'Brand Name', 'landzai' ),
+                'label' => __( 'Title', 'landzai' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( 'Landzai', 'landzai' ),
+                'default' => __( 'What Are The Reasons For Choosing Us?', 'landzai' ),
             ]
         );
-        $repeater->add_control(
+        $this->add_control(
+            'info',
+            [
+                'label' => __( 'Info', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => __( 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
+                sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.', 'landzai' ),
+            ]
+        );
+        $this->add_control(
+            'pera',
+            [
+                'label' => __( 'Pera', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => __( '<p class="sub-title w-100 mb-4">provident. Quidem voluptas eveniet quae consequuntur iusto aperiam porro vitae id iste ipsam, illum tempora a natus sapiente labore ab, expedita ratione. Quo, quod</p>
+                            <p class="sub-title w-100 mb-4">provident. Quidem voluptas eveniet quae consequuntur iusto aperiam porro vitae id iste ipsam, illum tempora a natus sapiente labore.</p>
+                            <p class="sub-title w-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae harum similique at possimus vel nesciunt autem amet voluptates sapiente cumque sit culpa voluptate modi.</p>', 'landzai' ),
+            ]
+        );
+        $this->add_control(
             'image',
             [
                 'label' => __( 'Choose Image', 'landzai' ),
@@ -71,45 +69,106 @@ class landzai_brand extends Widget_Base {
                 ],
             ]
         );
+        $this->add_control(
+            'form',
+            [
+                'label' => __( 'Form', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+            ]
+        );
+        $this->add_control(
+            'latitude',
+            [
+                'label' => __( 'Latitude', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __( '23.7947172', 'landzai' ),
+            ]
+        );
+        $this->add_control(
+            'longitude',
+            [
+                'label' => __( 'Longitude', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __( '90.3971412', 'landzai' ),
+            ]
+        );
+        $this->add_control(
+            'layout',
+            [
+                'label' => __( 'Layout', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'layout1' => [
+                        'title' => __( 'One', 'landzai' ),
+                        'icon' => 'eicon-form-horizontal',
+                    ],
+                    'layout2' => [
+                        'title' => __( 'Two', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
+                    ],
+                    'layout3' => [
+                        'title' => __( 'Three', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
+                    ],
+                ],
+                'default' => 'layout1',
+                'toggle' => true,
+            ]
+        );
+        $repeater = new \Elementor\Repeater();
         $repeater->add_control(
-            'link', [
-                'label' => __('Link', 'landzai'),
-                'type' => Controls_Manager::URL,
-                'show_external' => true,
+            'heading',
+            [
+                'label' => __( 'Heading', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => __( 'Phone', 'landzai' ),
+            ]
+        );
+        $repeater->add_control(
+            'w_title',
+            [
+                'label' => __( 'Title', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => __( '125 Street West LN', 'landzai' ),
+            ]
+        );
+        $repeater->add_control(
+            's_title',
+            [
+                'label' => __( 'Sub Title', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => __( 'Las Vegas, NY 15236', 'landzai' ),
+            ]
+        );
+        $repeater->add_control(
+            'icon',
+            [
+                'label' => __( 'Icon', 'ahope' ),
+                'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
-                    'url' => '#',
-                    'is_external' => true,
-                    'nofollow' => true,
+                    'value' => 'fas fa-user',
+                    'library' => 'solid',
                 ],
             ]
         );
         $this->add_control(
-            'brand_list',
+            'work_list',
             [
-                'label' => __( 'Brand List', 'landzai' ),
+                'label' => __( 'Work List', 'landzai' ),
                 'type' => \Elementor\Controls_Manager::REPEATER,
                 'fields' => $repeater->get_controls(),
                 'default' => [
                     [
-                        'title' => __( 'Landzai', 'landzai' ),
+                        'w_title' => __( 'Las Vegas, NY 15236', 'landzai' ),
                     ],
                     [
-                        'title' => __( 'Landzai', 'landzai' ),
+                        'w_title' => __( 'Las Vegas, NY 15236', 'landzai' ),
                     ],
                     [
-                        'title' => __( 'Landzai', 'landzai' ),
-                    ],
-                    [
-                        'title' => __( 'Landzai', 'landzai' ),
-                    ],
-                    [
-                        'title' => __( 'Landzai', 'landzai' ),
-                    ],
-                    [
-                        'title' => __( 'Landzai', 'landzai' ),
+                        'w_title' => __( 'Las Vegas, NY 15236', 'landzai' ),
                     ],
                 ],
-                'title_field' => '{{{ title }}}',
+                'title_field' => '{{{ w_title }}}',
             ]
         );
         $this->end_controls_section();
@@ -211,28 +270,9 @@ class landzai_brand extends Widget_Base {
     protected function render(){
 
         $settings = $this->get_settings();
-        if ($settings['layout'] == 'brands-section'){
-            $cls = 'brands-list-area';
-        }else{
-            $cls = 'brand-list';
-        }
-            echo '<!-- brands area start here  -->
-        <div class="brands-areas '.$settings['layout'].'">
-            <div class="container">
-                <div class="'.$cls.' slide-brands">';
-        if ($settings['brand_list']) {
-            foreach ($settings['brand_list'] as $brand) {
-                echo '<div class="single-brand ">
-                        <a '.get_that_link($brand['link']).'>'.get_that_image($brand['image']).'</a>
-                    </div>';
-            }
-        }
-                echo '</div>
-            </div>
-        </div>
-        <!-- brands area end here  -->';
+        include dirname(__FILE__). '/' . $settings['layout']. '.php';
     }
 
 
 }
-Plugin::instance()->widgets_manager->register_widget_type( new landzai_brand() );
+Plugin::instance()->widgets_manager->register_widget_type( new landzai_contactus() );

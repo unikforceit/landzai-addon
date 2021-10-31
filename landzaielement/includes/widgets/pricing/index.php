@@ -59,6 +59,16 @@ class landzai_pricing_table extends Widget_Base
             ]
         );
         $this->add_control(
+            'bgs',
+            [
+                'label' => __( 'Image', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+        $this->add_control(
             'layout',
             [
                 'label' => __( 'Layout', 'landzai' ),

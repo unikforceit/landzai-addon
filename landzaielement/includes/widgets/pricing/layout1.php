@@ -54,7 +54,7 @@
                         foreach ($settings['y_price_list'] as $yearly) {
 
                             echo '<div class="col-lg-4 col-md-6">
-                                    <div class="single-price ' . $monthly['y_active'] . '">
+                                    <div class="single-price ' . $yearly['y_active'] . '">
                                         <div class="price-header">
                                             <h2 class="price">' . $yearly['y_price'] . '</h2>
                                             <h3 class="package-name">' . $yearly['y_title'] . '</h3>

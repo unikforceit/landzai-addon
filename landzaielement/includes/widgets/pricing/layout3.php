@@ -72,7 +72,7 @@
                                    <ul>';
                                        landzai_list_control($monthly['features'], '');
                                     echo '</ul>
-                                   <a class="primary-btn-two" ' . get_that_link($monthly['y_link']) . '>' . $monthly['button'] . '</a>
+                                   <a class="primary-btn-two" ' . get_that_link($monthly['link']) . '>' . $monthly['button'] . '</a>
                                </div>
                            </div>
                         </div>';

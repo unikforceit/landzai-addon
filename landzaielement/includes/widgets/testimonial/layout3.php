@@ -19,7 +19,7 @@
                     </div>
                     <div class="clint-info">
                         <div class="media">
-                        '.get_that_image($testi['thumb'],'clint-img').'
+                        '.get_that_image($testi['thumb'],'clint-img mr-4').'
                             <div class="media-body align-self-center">
                               <h4 class="clint-name "><a '.get_that_link($testi['t_link']).'>'.$testi['t_title'].'</a></h4>
                               <span>'.$testi['t_subtitle'].'</span>

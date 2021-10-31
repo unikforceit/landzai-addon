@@ -7,7 +7,6 @@
             $('[data-background]').each(function() {
                 $(this).css('background-image', 'url('+ $(this).attr('data-background') + ')');
             });
-        $(".preloader").fadeOut();
         if($('.wow').length){
             new WOW({
                 offset: 100,
@@ -21,7 +20,7 @@
                 jQuery('.landzai-sticky-header').removeClass('sticky-on')
             }
         });
-        $(".landzai-icon-lightbox a").magnificPopup({
+        $(".landzai-icon-lightbox a, .popup-video").magnificPopup({
             type: 'iframe',
             iframe: {
                 patterns: {
@@ -403,6 +402,147 @@
 
     };
 
+    var LandzaiContactus = function ($scope, $) {
+
+        $scope.find('.contact-area, .contact-area-v2').each(function () {
+            var settings = $(this).data('landzai');
+
+            // Js Start
+            /*----------------------------
+    google-map
+    ------------------------------*/
+            if ($('#gmap').length > 0) {
+                var latitude = $(this).data('latitude');
+                var longitude = $(this).data('longitude');
+                new GMaps({
+                    div: '#gmap',
+                    lat: latitude, // 23.7947172,90.3971412
+                    lng: longitude,
+                    scrollwheel: false,
+                    styles: [
+                        {
+                            "featureType": "landscape",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#dddddd"
+                                },
+                                {
+                                    "lightness": 20
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.highway",
+                            "elementType": "geometry.fill",
+                            "stylers": [
+                                {
+                                    "color": "#ffffff"
+                                },
+                                {
+                                    "lightness": 17
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.highway",
+                            "elementType": "geometry.stroke",
+                            "stylers": [
+                                {
+                                    "color": "#ffffff"
+                                },
+                                {
+                                    "lightness": 29
+                                },
+                                {
+                                    "weight": 0.2
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.arterial",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#ffffff"
+                                },
+                                {
+                                    "lightness": 18
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.local",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#dddddd"
+                                },
+                                {
+                                    "lightness": 16
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "poi",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#ffffff"
+                                },
+                                {
+                                    "lightness": 21
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "poi.park",
+                            "elementType": "geometry",
+                            "stylers": [
+                                {
+                                    "color": "#ffffff"
+                                },
+                                {
+                                    "lightness": 21
+                                }
+                            ]
+                        },
+                        {
+                            "elementType": "labels.text.stroke",
+                            "stylers": [
+                                {
+                                    "visibility": "on"
+                                },
+                                {
+                                    "color": "#ffffff"
+                                },
+                                {
+                                    "lightness": 16
+                                }
+                            ]
+                        },
+                        {
+                            "elementType": "labels.icon",
+                            "stylers": [
+                                {
+                                    "visibility": "on"
+                                }
+                            ]
+                        }
+                    ]
+                }).addMarker({
+                    lat: latitude, //23.792930, 90.403798
+                    lng: longitude,
+                    infoWindow: {
+                        content: '<div class="map-marker-box"><h2 class="title">Headquarter</h2> <p>9541 Brightwell Dr, <br /> Indianapolis, IN 46260</p></div>',
+                    }
+                });
+            };
+            // Js End
+        });
+
+    };
+
 
     $(window).on('elementor/frontend/init', function () {
         if (elementorFrontend.isEditMode()) {
@@ -419,6 +559,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial5);
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-counter-step.default', Landzaisinglecounter);
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-project.default', LandzaiProject);
+            elementorFrontend.hooks.addAction('frontend/element_ready/landzai-contactus.default', LandzaiContactus);
         }
         else {
             console.log('Elementor frontend mod loaded');
@@ -433,6 +574,7 @@
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-testimonial.default', LandzaiTestimonial5);
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-counter-step.default', Landzaisinglecounter);
             elementorFrontend.hooks.addAction('frontend/element_ready/landzai-project.default', LandzaiProject);
+            elementorFrontend.hooks.addAction('frontend/element_ready/landzai-contactus.default', LandzaiContactus);
         }
     });
 console.log('addon js loaded');

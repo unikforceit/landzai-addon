@@ -6,14 +6,14 @@ if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
 
 
-class landzai_brand extends Widget_Base {
+class landzai_sidebar extends Widget_Base {
 
     public function get_name() {
-        return 'landzai-brand';
+        return 'landzai-sidebar';
     }
  
     public function get_title() {
-        return __('Brand', 'landzai');
+        return __('Sidebar', 'landzai');
     }
 
     public function get_icon() {
@@ -29,87 +29,80 @@ class landzai_brand extends Widget_Base {
         $this->start_controls_section(
             'content_section',
             [
-                'label' => __( 'Content', 'landzai' ),
+                'label' => __( 'Sidebar', 'landzai' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
         $this->add_control(
-            'layout',
+            'image1',
             [
-                'label' => __( 'Layout', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
-                'options' => [
-                    'brands-area' => [
-                        'title' => __( 'One', 'landzai' ),
-                        'icon' => 'eicon-form-horizontal',
-                    ],
-                    'brands-section' => [
-                        'title' => __( 'Two', 'landzai' ),
-                        'icon' => 'eicon-post-slider',
-                    ],
-                ],
-                'default' => 'brands-area',
-                'toggle' => true,
-            ]
-        );
-        $repeater = new \Elementor\Repeater();
-        $repeater->add_control(
-            'title',
-            [
-                'label' => __( 'Brand Name', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => __( 'Landzai', 'landzai' ),
-            ]
-        );
-        $repeater->add_control(
-            'image',
-            [
-                'label' => __( 'Choose Image', 'landzai' ),
+                'label' => __( 'Image 1', 'landzai' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
             ]
         );
-        $repeater->add_control(
-            'link', [
-                'label' => __('Link', 'landzai'),
-                'type' => Controls_Manager::URL,
-                'show_external' => true,
+         $this->add_control(
+            'image2',
+            [
+                'label' => __( 'Image 2', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
-                    'url' => '#',
-                    'is_external' => true,
-                    'nofollow' => true,
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
             ]
         );
-        $this->add_control(
-            'brand_list',
+         $this->add_control(
+            'image3',
             [
-                'label' => __( 'Brand List', 'landzai' ),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
+                'label' => __( 'Image 3', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
-                    [
-                        'title' => __( 'Landzai', 'landzai' ),
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+         $this->add_control(
+            'image4',
+            [
+                'label' => __( 'Image 4', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'layout',
+            [
+                'label' => __( 'Layout', 'landzai' ),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'layout1' => [
+                        'title' => __( 'Search', 'landzai' ),
+                        'icon' => 'eicon-form-horizontal',
                     ],
-                    [
-                        'title' => __( 'Landzai', 'landzai' ),
+                    'layout2' => [
+                        'title' => __( 'Category', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
                     ],
-                    [
-                        'title' => __( 'Landzai', 'landzai' ),
+                    'layout3' => [
+                        'title' => __( 'News', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
                     ],
-                    [
-                        'title' => __( 'Landzai', 'landzai' ),
+                    'layout4' => [
+                        'title' => __( 'Archive', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
                     ],
-                    [
-                        'title' => __( 'Landzai', 'landzai' ),
-                    ],
-                    [
-                        'title' => __( 'Landzai', 'landzai' ),
+                    'layout5' => [
+                        'title' => __( 'Tags', 'landzai' ),
+                        'icon' => 'eicon-post-slider',
                     ],
                 ],
-                'title_field' => '{{{ title }}}',
+                'default' => 'layout1',
+                'toggle' => true,
             ]
         );
         $this->end_controls_section();
@@ -211,28 +204,11 @@ class landzai_brand extends Widget_Base {
     protected function render(){
 
         $settings = $this->get_settings();
-        if ($settings['layout'] == 'brands-section'){
-            $cls = 'brands-list-area';
-        }else{
-            $cls = 'brand-list';
-        }
-            echo '<!-- brands area start here  -->
-        <div class="brands-areas '.$settings['layout'].'">
-            <div class="container">
-                <div class="'.$cls.' slide-brands">';
-        if ($settings['brand_list']) {
-            foreach ($settings['brand_list'] as $brand) {
-                echo '<div class="single-brand ">
-                        <a '.get_that_link($brand['link']).'>'.get_that_image($brand['image']).'</a>
-                    </div>';
-            }
-        }
-                echo '</div>
-            </div>
-        </div>
-        <!-- brands area end here  -->';
+        echo ' <div class="blog-sidebar">';
+        include dirname(__FILE__). '/' . $settings['layout']. '.php';
+        echo ' </div>';
     }
 
 
 }
-Plugin::instance()->widgets_manager->register_widget_type( new landzai_brand() );
+Plugin::instance()->widgets_manager->register_widget_type( new landzai_sidebar() );

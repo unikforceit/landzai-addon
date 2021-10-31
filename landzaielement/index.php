@@ -158,6 +158,7 @@ if (!class_exists('LandzaiElement_Elementor_Addons')) :
         public function register_frontend_scripts() {
             foreach( glob( LANDZAI_PLUG_DIR. 'landzaielement/assets/js/*.js' ) as $file ) {
                 $filename = substr($file, strrpos($file, '/') + 1);
+                wp_enqueue_script( 'landzai-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB4RM7zOgOKq6n2fv407hX28xiL-M6vLdY', array('jquery'), LANDZAI_VERSION, true);
                 wp_enqueue_script( $filename, Landzai_PLUGIN_URL . 'assets/js/'.$filename, array('jquery'), LANDZAI_VERSION, true);
             }
         }
@@ -171,7 +172,7 @@ if (!class_exists('LandzaiElement_Elementor_Addons')) :
             foreach( glob( LANDZAI_PLUG_DIR. 'landzaielement/assets/css/*.css' ) as $file ) {
                 $filename = substr($file, strrpos($file, '/') + 1);
                 wp_enqueue_style( $filename, Landzai_PLUGIN_URL . 'assets/css/'.$filename);
-                wp_enqueue_style( 'landzai-icon', Landzai_PLUGIN_URL . 'assets/css/landzai/landzai.css');
+                wp_enqueue_style( 'landzai-icon', Landzai_PLUGIN_URL . 'assets/css/landzai/icons/flaticon.css');
             }
         }
         public function add_elementor_category() {
